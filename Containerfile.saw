@@ -1,0 +1,115 @@
+### SAW golden image bootc container
+#
+# Source of truth for the SAW (Secure Agent Workspace) golden VM image.
+# The qcow2 disk image and the disk-image container are derived from this
+# container: bib-saw.yaml drives bootc-image-builder, and
+# Containerfile.saw-disk-image wraps the resulting qcow2 as an OCI artifact.
+#
+# Build pattern reference: redhat/rhel-ai/containers/bootc (Containerfile.cuda).
+# Tracking: RHAI-10799. Repo scaffold: RHAI-5877.
+
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+ARG VENDOR
+ARG SAW_VERSION_ID
+
+USER root
+
+LABEL org.opencontainers.image.vendor=${VENDOR} \
+      org.opencontainers.image.title="SAW golden image (bootc)" \
+      org.opencontainers.image.description="Bootable RHEL 9 base for SAW per-user VMs" \
+      version="${SAW_VERSION_ID}"
+
+# Entitled RHEL 9 repos (BaseOS, AppStream) come from the activation key
+# wired into the Konflux build: rhel-ai-activation-key, the same key the
+# RHEL AI bootc builds use (see PMC rhelai config-containers.yaml). The key
+# is pinned to release 9.6, which matches this base — no release re-pin is
+# needed.
+RUN . /etc/os-release \
+    && echo "$VERSION_ID" > /etc/dnf/vars/releasever
+
+# DNF main options written to dnf.conf directly — valid on both DNF4 and
+# DNF5, so the same Containerfile builds on any RHEL minor.
+RUN printf 'best=True\ninstall_weak_deps=False\ntsflags=nodocs\n' >> /etc/dnf/dnf.conf
+
+# SAW image content:
+# - podman: rootless sandbox runtime, hard requirement of openshell-gateway
+# - python3: the in-guest installer (apply_bom.py) is Python
+# - cloud-init, qemu-guest-agent, openssh: VM provisioning on OpenShift Virtualization
+# - nodejs, nmap-ncat: carried over from the forge image; pending confirmation
+#   against the OpenShell installer package (RHAI-10799)
+# Docker CE is dropped; podman replaces it.
+RUN <<EOT
+set -ex
+dnf install -y \
+    binutils \
+    cloud-init \
+    curl \
+    jq \
+    nmap-ncat \
+    nodejs \
+    openssh-clients \
+    openssh-server \
+    podman \
+    python3 \
+    python3-pip \
+    qemu-guest-agent
+dnf clean all
+EOT
+
+# OpenShell is baked into the golden image (2026-10-16 meeting decision):
+# versions are managed here and bumped by replacing the RPM files, each
+# bump producing a new golden image. Sandboxes and per-user config stay
+# runtime-only, applied by the installer units shipped below. The consumer
+# shuts off dynamic OpenShell installation in production.
+#
+# Base decision 2026-10-22: RHEL 9. The el9ai RPM channel is the shipped
+# source (el10 builds are not coming any time soon). Both arches are
+# committed: x86_64 from the internal el9ai channel, aarch64 from the
+# RHEL AI layered el9 repo
+# (https://rhsm-pulp.corp.redhat.com/content/dist/layered/rhel9/aarch64/rhelai/3.6/os/Packages/o/).
+COPY context/saw/rpms/ /tmp/openshell-rpms/
+ARG TARGETARCH
+RUN <<EOT
+set -ex
+case "${TARGETARCH}" in
+    amd64) RPM_ARCH=x86_64 ;;
+    arm64) RPM_ARCH=aarch64 ;;
+    *) echo "unsupported TARGETARCH: ${TARGETARCH}" >&2; exit 1 ;;
+esac
+dnf install -y /tmp/openshell-rpms/${RPM_ARCH}/openshell-*.rpm
+dnf clean all
+rm -rf /tmp/openshell-rpms
+EOT
+
+# SAW context: disconnected-registry template, CA trust root, installer units
+COPY context/saw/etc /etc
+COPY context/saw/usr /usr
+
+# Identify the image in os-release
+RUN <<EOT
+set -ex
+sed -i -e "/^VARIANT=/ {s/^VARIANT=.*/VARIANT=\"Red Hat AI\"/; t}" -e "\$aVARIANT=\"Red Hat AI\"" /usr/lib/os-release
+sed -i -e "/^VARIANT_ID=/ {s/^VARIANT_ID=.*/VARIANT_ID=saw/; t}" -e "\$aVARIANT_ID=saw" /usr/lib/os-release
+EOT
+
+RUN <<EOT
+set -ex
+# VMs are updated by deploying a new golden image, not by in-place
+# bootc-fetch-apply updates against a registry.
+rm -f /usr/lib/systemd/system/default.target.wants/bootc-fetch-apply-updates.timer
+# First-boot VM provisioning
+ln -s ../cloud-init.target /usr/lib/systemd/system/default.target.wants
+# Platform integration on OpenShift Virtualization
+ln -s /usr/lib/systemd/system/qemu-guest-agent.service /etc/systemd/system/multi-user.target.wants/qemu-guest-agent.service
+EOT
+
+# The saw-install/saw-apply units ship in the image but stay disabled: the
+# OpenShell installer package (apply_bom.py, verify-bundle, trust roots) and
+# the input disks are attached by the consumer chart at VM provisioning time.
+# Enabling them is part of that provisioning, not of the image build.
+
+# Validate the image is a well-formed bootc container: bootable kernel,
+# init system present, /etc vs /usr separation, container structure.
+RUN bootc container lint

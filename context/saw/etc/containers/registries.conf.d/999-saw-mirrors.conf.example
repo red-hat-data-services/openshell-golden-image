@@ -1,0 +1,14 @@
+# Disconnected-mirror template for SAW golden-image VMs.
+#
+# Copy to /etc/containers/registries.conf.d/999-saw-mirrors.conf (drop the
+# .example suffix) and fill in the mirror registry, either at image build
+# time or from the per-VM config via cloud-init / the installer.
+# The file is inert until renamed, so connected deployments are unaffected.
+
+[[registry]]
+prefix = ""
+location = "REGISTRY_TO_MIRROR"
+mirror-by-digest-only = true
+
+[[registry.mirror]]
+location = "MIRROR_REGISTRY"
