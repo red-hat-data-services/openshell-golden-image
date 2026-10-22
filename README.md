@@ -60,10 +60,12 @@ Every disk-image-container build publishes automatically: the Konflux
 ReleasePlan (`saw-disk-image-containers-stage`) auto-releases each arch's
 wrapper to `quay.io/aipcc/saw-golden-image/`, tagged from the image
 version label plus timestamp. The trigger is a merge to `main` touching
-the component's files — no release branches, no tags. `saw-bootc` is
-deliberately not published: it stays in the tenant build registry as the
-source of truth; only the disk-image containers are consumed (via the
-`openshell-gateway` DataSource import).
+the component's files — no release branches, no tags. The bootc source
+container is published alongside (`saw-bootc-stage`), tagged in lockstep
+and referenced from the disk image's labels: it is what makes the disk
+reproducible and keeps bootc upgrade open as an update path for running
+VMs. Nothing in SAW consumes it today — only the disk-image containers
+are imported by the `openshell-gateway` DataSource.
 
 ## Open items
 
