@@ -1,0 +1,30 @@
+# SAW installer: install phase.
+#
+# Runs apply_bom.py (install) from the staged, verified copy in
+# /var/lib/saw/verified/installer: installs the BOM components, syncs
+# gateway config and CA trust, and starts/restarts the gateway. Reads only
+# the BOM and config, so a bad profile can never block a software install.
+#
+# This unit ships disabled. The consumer chart attaches the installer,
+# profiles, and credential Secrets to the VM as read-only disks (or
+# virtiofs) mounted under /run/saw, and provisioning stages and verifies
+# the installer tree before this unit is enabled.
+#
+# Source: "SAW Golden Image & Installer Architecture".
+# Tracking: RHAI-10799.
+
+[Unit]
+Description=SAW installer: install phase (apply_bom.py install)
+After=local-fs.target network-online.target
+Wants=network-online.target
+ConditionPathExists=/var/lib/saw/verified/installer/apply_bom.py
+Before=saw-apply.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /var/lib/saw/verified/installer/apply_bom.py install
+RemainAfterExit=yes
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

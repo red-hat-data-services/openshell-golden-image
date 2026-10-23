@@ -1,0 +1,7 @@
+# Root filesystem sizing for the SAW qcow2.
+# 20 GiB: the golden image carries the OS and tooling only; agent sandboxes,
+# the harness volume, and user data live elsewhere. The consumer chart's
+# 40Gi VM root PVC (forge default) still applies at import time.
+[[customizations.filesystem]]
+mountpoint = "/"
+minsize = "20 GiB"

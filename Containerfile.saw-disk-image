@@ -1,0 +1,46 @@
+### SAW disk-image container
+#
+# Wraps the qcow2 produced by bootc-image-builder (bib-saw.yaml) as an OCI
+# artifact layer. This container is the released artifact: it survives
+# internal-registry mirroring and is imported into the openshell-gateway
+# DataSource by CDI.
+#
+# Build pattern reference: redhat/rhel-ai/containers/bootc
+# (Containerfile.bootc-cuda-disk-image-container). Tracking: RHAI-10799.
+
+ARG OCI_EXTRACT_IMAGE
+
+FROM ${OCI_EXTRACT_IMAGE} AS oci-extract
+
+ARG OCI_ARTIFACT
+ARG ORAS_VERSION
+ARG IMAGE_PULL_SECRET
+
+USER root
+
+# Install oras, arch-aware (the image is built for x86_64 and arm64)
+RUN <<EOT
+set -ex
+case "$(uname -m)" in
+    x86_64) ORAS_ARCH=amd64 ;;
+    aarch64) ORAS_ARCH=arm64 ;;
+    *) echo "unsupported architecture $(uname -m)" >&2; exit 1 ;;
+esac
+curl -LO "https://github.com/oras-project/oras/releases/download/v${ORAS_VERSION}/oras_${ORAS_VERSION}_linux_${ORAS_ARCH}.tar.gz"
+mkdir -p oras-install/
+tar -zxf oras_${ORAS_VERSION}_linux_*.tar.gz -C oras-install/
+mv oras-install/oras /usr/local/bin/
+rm -rf oras_${ORAS_VERSION}_*.tar.gz oras-install/
+EOT
+
+# Pull the qcow2 OCI artifact using registry credentials
+RUN --mount=type=secret,id=${IMAGE_PULL_SECRET}/.dockerconfigjson \
+    oras pull ${OCI_ARTIFACT} --registry-config /run/secrets/${IMAGE_PULL_SECRET}/.dockerconfigjson --output /disk
+
+FROM scratch
+
+ARG SAW_VERSION_ID
+
+LABEL version="${SAW_VERSION_ID}"
+
+COPY --chown=107:107 --chmod=0440 --from=oci-extract /disk /disk

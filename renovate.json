@@ -1,0 +1,51 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "argfile*.conf"
+      ],
+      "matchStrings": [
+        "BASE_IMAGE=(?<depName>.*):(?<currentValue>.*)"
+      ],
+      "depNameTemplate": "{{depName}}",
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "redhat"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "bib-*.yaml"
+      ],
+      "matchStrings": [
+        "bootc-builder-image:\\s*\"(?<depName>[^:@]+):(?<currentValue>[^@]+)(?:@(?<currentDigest>sha256:[a-f0-9]+))?\""
+      ],
+      "datasourceTemplate": "docker"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "argfile-saw-disk-image*.conf"
+      ],
+      "matchStrings": [
+        "OCI_EXTRACT_IMAGE=(?<depName>.*):(?<currentValue>.*)"
+      ],
+      "depNameTemplate": "{{depName}}",
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "redhat"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "argfile-saw-disk-image*.conf"
+      ],
+      "matchStrings": [
+        "ORAS_VERSION=(?<currentValue>.*)"
+      ],
+      "depNameTemplate": "oras-project/oras",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver"
+    }
+  ]
+}
