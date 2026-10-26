@@ -55,10 +55,28 @@ build: `rhel-ai-activation-key`, the same key the RHEL AI bootc builds
 use (see PMC `rhelai` config-containers.yaml). Pinned to release 9.6,
 matching this base.
 
+## Release
+
+Every disk-image-container build publishes automatically: the Konflux
+ReleasePlan (`saw-disk-image-containers-stage`) auto-releases each arch's
+wrapper to `quay.io/aipcc/saw-golden-image/`, tagged from the image
+version label plus timestamp. The trigger is a merge to `main` touching
+the component's files — no release branches, no tags. `saw-bootc` is
+deliberately not published: it stays in the tenant build registry as the
+source of truth; only the disk-image containers are consumed (via the
+`openshell-gateway` DataSource import).
+
 ## Open items
 
-- Konflux tenant `ai-incubator-tenant` on stone-prod-p02: MR pending;
-  activation key and pull secrets to be copied into the namespace.
+- Konflux secrets: the activation key (`ai-aipcc-cicd/rhel-ai-activation-key`)
+  and the registry pull secret are synced into `ai-incubator-tenant` from
+  corp Vault by External Secrets Operator — no manual secret copies. The
+  `vault-approle` secret-id and `trusted-ca` ConfigMap the SecretStore
+  needs are applied out-of-band, as in every other tenant using this
+  pattern.
+- Per-arch artifact-pull secrets (`saw-qcow2-disk-image-image-pull`,
+  `-aarch64`): required by the wrapper builds to pull their qcow2
+  artifacts from the tenant workloads registry; credentials pending.
 - `.tekton/` pipelineruns: land with Konflux onboarding (branch
   RHAI-10799/tekton-pipelines).
 - nodejs/nmap-ncat: pending confirmation against the installer package.
