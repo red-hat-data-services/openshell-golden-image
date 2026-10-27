@@ -26,14 +26,13 @@ qemu-guest-agent, ssh, the disconnected-registry template under
 directory `/etc/saw/trust`, and the `saw-install`/`saw-apply` systemd
 units.
 
-OpenShell is baked in by design: the RPM versions are managed in this
-repo and bumped by replacing the files, each bump producing a new golden
-image; the consumer side shuts off dynamic OpenShell installation in
-production. Base decision (2026-10-22): RHEL 9, because el10 OpenShell
-RPMs will not be available any time soon — the el9ai channel is the
-shipped source. Both arches are committed under `context/saw/rpms/`:
-x86_64 from the internal el9ai channel, aarch64 from the RHEL AI layered
-el9 repo.
+OpenShell is baked in by design: the four RPMs are installed at build time
+from the RHEL AI layered el9 repo, pinned to exact versions in
+`argfile-saw.conf` — a version bump is a one-line diff, and each bump
+produces a new golden image; the consumer side shuts off dynamic OpenShell
+installation in production. Base decision (2026-10-22): RHEL 9, because
+el10 OpenShell RPMs will not be available any time soon. When hermetic
+builds are enabled, the RPMs move to Hermeto prefetch inputs.
 
 The installer's role is reduced accordingly: it creates sandboxes and
 applies per-user config (via the saw-* units), it no longer installs
@@ -46,9 +45,9 @@ OpenShell in production. The units ship disabled; the installer package
   `Containerfile.saw`.
 - `bib-saw.yaml`, `config/config-saw-qcow2.toml` — bootc-image-builder
   inputs for the qcow2 (source-image digest updated by Konflux nudge MRs).
-- `argfile-saw-disk-image.conf`, `argfile-saw-disk-image-aarch64.conf` —
-  per-arch inputs for the disk-image containers (OCI_ARTIFACT digest
-  updated by Konflux nudge MRs).
+- `argfile-saw-disk-image.conf` — inputs for the multi-arch disk-image
+  container: per-arch qcow2 digests (updated by Konflux nudge MRs), the
+  image-pull secret, and the version.
 
 Entitled RHEL 9 repos come from the activation key wired into the Konflux
 build: `rhel-ai-activation-key`, the same key the RHEL AI bootc builds

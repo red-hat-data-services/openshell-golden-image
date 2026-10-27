@@ -1,7 +1,6 @@
 .idea/
 *.log
 *.rpm
-!context/saw/rpms/**
 .DS_Store
 output/
 seed/
