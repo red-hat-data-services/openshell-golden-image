@@ -67,14 +67,19 @@ EOT
 #
 # Base decision 2026-10-22: RHEL 9 (el10 builds are not coming any time
 # soon). OPENSHELL_REPO_URL is the layered rhelai el9 repo, per-arch via
-# $basearch; the build's activation key must entitle it (verified on the
-# first Konflux build). When hermetic builds are enabled, these RPMs move
-# to Hermeto prefetch inputs instead.
+# $basearch, on the entitled CDN: the repo must present the entitlement
+# client certs (sslclientcert/sslclientkey) or the CDN answers 403 —
+# verified on the build cluster 2026-10-27. When hermetic builds are
+# enabled, these RPMs move to Hermeto prefetch inputs instead.
 ARG OPENSHELL_REPO_URL
 ARG OPENSHELL_VERSION
 RUN <<EOT
 set -ex
-printf '[openshell]\nname=OpenShell (RHEL AI layered el9)\nbaseurl=%s\nenabled=1\ngpgcheck=1\ngpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release\n' "${OPENSHELL_REPO_URL}" > /etc/yum.repos.d/openshell.repo
+CRT=$(ls /etc/pki/entitlement/*.pem 2>/dev/null | grep -v -- '-key' | head -1)
+KEYF=$(ls /etc/pki/entitlement/*-key.pem 2>/dev/null | head -1)
+# sslcacert matches the rhsm-managed repos (redhat.repo): cdn.redhat.io's
+# chain is signed by the RHSM CA, not the public bundle.
+printf '[openshell]\nname=OpenShell (RHEL AI layered el9)\nbaseurl=%s\nenabled=1\ngpgcheck=1\ngpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release\nsslcacert=/etc/rhsm/ca/redhat-uep.pem\nsslclientcert=%s\nsslclientkey=%s\n' "${OPENSHELL_REPO_URL}" "${CRT}" "${KEYF}" > /etc/yum.repos.d/openshell.repo
 dnf install -y \
     openshell-cli-${OPENSHELL_VERSION} \
     openshell-gateway-${OPENSHELL_VERSION} \
