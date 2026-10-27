@@ -1,0 +1,28 @@
+# SAW installer: apply phase.
+#
+# Runs apply_bom.py (apply) after saw-install has completed for the same
+# BOM: applies the SAW-BOM profiles and provider credentials, handing the
+# plan to a child process running as the runtime user so that user never
+# gets access to /run/saw. State is recorded in /var/lib/saw and
+# reconciled on every boot.
+#
+# This unit ships disabled; see saw-install.service for the provisioning
+# contract.
+#
+# Source: "SAW Golden Image & Installer Architecture".
+# Tracking: RHAI-10799.
+
+[Unit]
+Description=SAW installer: apply phase (apply_bom.py apply)
+Requires=saw-install.service
+After=saw-install.service
+ConditionPathExists=/var/lib/saw/verified/installer/apply_bom.py
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /var/lib/saw/verified/installer/apply_bom.py apply
+RemainAfterExit=yes
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+.idea/
+*.log
+*.rpm
+.DS_Store
+output/
+seed/
+boot.log
