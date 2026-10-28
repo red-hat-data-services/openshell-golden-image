@@ -1,0 +1,36 @@
+# Hermetic RPM inputs for Containerfile.saw, resolved by
+# rpm-lockfile-prototype into rpms.lock.yaml (regenerate with
+# bin/generate-rpms-lockfile.sh). The lockfile pins exact versions —
+# there is no version pinning here. MintMaker refreshes rpms.lock.yaml
+# when the base image or the repositories drift.
+contentOrigin:
+  repofiles:
+    - ./repos/rhel-9.6-eus.repo
+    - ./repos/rhelai-3.6.repo
+arches:
+  - x86_64
+  - aarch64
+installWeakDeps: false
+packages:
+  # VM provisioning on OpenShift Virtualization
+  - cloud-init
+  - qemu-guest-agent
+  - openssh-clients
+  - openssh-server
+  # rootless sandbox runtime, hard requirement of openshell-gateway
+  - podman
+  # the in-guest installer (apply_bom.py) is Python
+  - python3
+  - python3-pip
+  # carried over from the forge image; pending confirmation against the
+  # OpenShell installer package (RHAI-10799)
+  - binutils
+  - curl
+  - jq
+  - nmap-ncat
+  - nodejs
+  # OpenShell, baked into the golden image (2026-10-16 decision)
+  - openshell-cli
+  - openshell-gateway
+  - openshell-sandbox
+  - openshell-supervisor

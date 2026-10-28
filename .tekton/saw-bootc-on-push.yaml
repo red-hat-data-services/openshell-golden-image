@@ -16,7 +16,10 @@ metadata:
           ".tekton/saw-bootc-on-push.yaml".pathChanged() ||
           "argfile-saw.conf".pathChanged() ||
           "Containerfile.saw".pathChanged() ||
-          "context/saw/***".pathChanged()
+          "context/saw/***".pathChanged() ||
+          "rpms.in.yaml".pathChanged() ||
+          "rpms.lock.yaml".pathChanged() ||
+          "repos/***".pathChanged()
       )
   labels:
     appstudio.openshift.io/application: saw-golden-image
@@ -65,6 +68,10 @@ spec:
     value: "SYS_ADMIN"
   - name: privileged-nested
     value: "true"
+  - name: hermetic
+    value: "true"
+  - name: prefetch-input
+    value: '{"type": "rpm", "path": "."}'
   pipelineRef:
     params:
     - name: url
