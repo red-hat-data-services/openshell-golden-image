@@ -21,27 +21,35 @@ LABEL org.opencontainers.image.vendor=${VENDOR} \
       org.opencontainers.image.description="Bootable RHEL 9 base for SAW per-user VMs" \
       version="${SAW_VERSION_ID}"
 
-# Entitled RHEL 9 repos (BaseOS, AppStream) come from the activation key
-# wired into the Konflux build: rhel-ai-activation-key, the same key the
-# RHEL AI bootc builds use (see PMC rhelai config-containers.yaml). The key
-# is pinned to release 9.6, which matches this base — no release re-pin is
-# needed.
-RUN . /etc/os-release \
-    && echo "$VERSION_ID" > /etc/dnf/vars/releasever
-
 # DNF main options written to dnf.conf directly — valid on both DNF4 and
-# DNF5, so the same Containerfile builds on any RHEL minor.
+# DNF5, so the same Containerfile builds on any RHEL minor. Weak deps off
+# matches installWeakDeps: false in rpms.in.yaml.
 RUN printf 'best=True\ninstall_weak_deps=False\ntsflags=nodocs\n' >> /etc/dnf/dnf.conf
 
-# SAW image content:
+# SAW image content. The build is hermetic (RHAI-15892): the Konflux
+# prefetch-dependencies task downloads every RPM pinned in rpms.lock.yaml
+# and injects local dnf repositories; the build itself runs without network.
+# Sourcing /cachi2/cachi2.env (present in hermetic builds) wires dnf to the
+# prefetched repositories. Package list lives in rpms.in.yaml; exact
+# versions in rpms.lock.yaml.
 # - podman: rootless sandbox runtime, hard requirement of openshell-gateway
 # - python3: the in-guest installer (apply_bom.py) is Python
 # - cloud-init, qemu-guest-agent, openssh: VM provisioning on OpenShift Virtualization
 # - nodejs, nmap-ncat: carried over from the forge image; pending confirmation
 #   against the OpenShell installer package (RHAI-10799)
-# Docker CE is dropped; podman replaces it.
+# - openshell-*: the four OpenShell RPMs, baked into the golden image (2026-10-16
+#   decision); versions are pinned by rpms.lock.yaml, refreshed by MintMaker.
 RUN <<EOT
 set -ex
+if [ -f /cachi2/cachi2.env ]; then
+    . /cachi2/cachi2.env
+fi
+# The hermeto repositories verify package signatures (gpgcheck=1) but carry
+# no gpgkey, and the bootc base ships the Red Hat release key file without
+# importing it into the rpmdb (UBI images import it; bootc images do not).
+# Import it so dnf can verify the prefetched RPMs — the same trust root the
+# entitled repos used before hermetic builds.
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
 dnf install -y \
     binutils \
     cloud-init \
@@ -54,39 +62,12 @@ dnf install -y \
     podman \
     python3 \
     python3-pip \
-    qemu-guest-agent
+    qemu-guest-agent \
+    openshell-cli \
+    openshell-gateway \
+    openshell-sandbox \
+    openshell-supervisor
 dnf clean all
-EOT
-
-# OpenShell is baked into the golden image (2026-10-16 meeting decision):
-# the four RPMs are installed at build time from the RHEL AI layered el9
-# repo, pinned to exact versions in argfile-saw.conf — a bump is a one-line
-# diff, not a binary file replacement. Sandboxes and per-user config stay
-# runtime-only, applied by the installer units shipped below. The consumer
-# shuts off dynamic OpenShell installation in production.
-#
-# Base decision 2026-10-22: RHEL 9 (el10 builds are not coming any time
-# soon). OPENSHELL_REPO_URL is the layered rhelai el9 repo, per-arch via
-# $basearch, on the entitled CDN: the repo must present the entitlement
-# client certs (sslclientcert/sslclientkey) or the CDN answers 403 —
-# verified on the build cluster 2026-10-27. When hermetic builds are
-# enabled, these RPMs move to Hermeto prefetch inputs instead.
-ARG OPENSHELL_REPO_URL
-ARG OPENSHELL_VERSION
-RUN <<EOT
-set -ex
-CRT=$(ls /etc/pki/entitlement/*.pem 2>/dev/null | grep -v -- '-key' | head -1)
-KEYF=$(ls /etc/pki/entitlement/*-key.pem 2>/dev/null | head -1)
-# sslcacert matches the rhsm-managed repos (redhat.repo): cdn.redhat.io's
-# chain is signed by the RHSM CA, not the public bundle.
-printf '[openshell]\nname=OpenShell (RHEL AI layered el9)\nbaseurl=%s\nenabled=1\ngpgcheck=1\ngpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release\nsslcacert=/etc/rhsm/ca/redhat-uep.pem\nsslclientcert=%s\nsslclientkey=%s\n' "${OPENSHELL_REPO_URL}" "${CRT}" "${KEYF}" > /etc/yum.repos.d/openshell.repo
-dnf install -y \
-    openshell-cli-${OPENSHELL_VERSION} \
-    openshell-gateway-${OPENSHELL_VERSION} \
-    openshell-sandbox-${OPENSHELL_VERSION} \
-    openshell-supervisor-${OPENSHELL_VERSION}
-dnf clean all
-rm -f /etc/yum.repos.d/openshell.repo
 EOT
 
 # SAW context: disconnected-registry template, CA trust root, installer units

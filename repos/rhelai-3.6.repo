@@ -1,0 +1,17 @@
+# RHEL AI 3.6 layered repo (el9ai) for hermetic lockfile generation — the
+# four openshell-* RPMs come from here. Same credential mechanism as
+# rhel-9.6-eus.repo.
+
+[rhelai-3.6-for-rhel-9-rpms]
+name = Red Hat Enterprise Linux AI (3.6) for RHEL 9 $basearch (RPMs)
+baseurl = https://cdn.redhat.com/content/dist/layered/rhel9/$basearch/rhelai/3.6/os
+enabled = 1
+gpgcheck = 1
+repo_gpgcheck = 0
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+sslverify = 1
+sslcacert = /etc/rhsm/ca/redhat-uep.pem
+sslclientcert = $SSL_CLIENT_CERT
+sslclientkey = $SSL_CLIENT_KEY
+metadata_expire = 86400
+enabled_metadata = 1

@@ -27,12 +27,10 @@ directory `/etc/saw/trust`, and the `saw-install`/`saw-apply` systemd
 units.
 
 OpenShell is baked in by design: the four RPMs are installed at build time
-from the RHEL AI layered el9 repo, pinned to exact versions in
-`argfile-saw.conf` — a version bump is a one-line diff, and each bump
-produces a new golden image; the consumer side shuts off dynamic OpenShell
-installation in production. Base decision (2026-10-22): RHEL 9, because
-el10 OpenShell RPMs will not be available any time soon. When hermetic
-builds are enabled, the RPMs move to Hermeto prefetch inputs.
+from the RHEL AI layered el9 repo — a version bump in the lockfile, and each
+bump produces a new golden image; the consumer side shuts off dynamic
+OpenShell installation in production. Base decision (2026-10-22): RHEL 9,
+because el10 OpenShell RPMs will not be available any time soon.
 
 The installer's role is reduced accordingly: it creates sandboxes and
 applies per-user config (via the saw-* units), it no longer installs
@@ -49,10 +47,29 @@ OpenShell in production. The units ship disabled; the installer package
   container: per-arch qcow2 digests (updated by Konflux nudge MRs), the
   image-pull secret, and the version.
 
-Entitled RHEL 9 repos come from the activation key wired into the Konflux
-build: `rhel-ai-activation-key`, the same key the RHEL AI bootc builds
-use (see PMC `rhelai` config-containers.yaml). Pinned to release 9.6,
-matching this base.
+## Hermetic build (RHAI-15892)
+
+The `saw-bootc` build is hermetic: the Konflux `prefetch-dependencies` task
+downloads every RPM pinned in `rpms.lock.yaml` (Hermeto) and the build
+itself runs without network. The activation key (`rhel-ai-activation-key`)
+is used only by the prefetch task, which registers to fetch the entitled
+cdn.redhat.com content (RHEL 9.6 EUS BaseOS/AppStream + RHEL AI 3.6).
+
+- `rpms.in.yaml` — package list and repo sources; resolved by
+  `rpm-lockfile-prototype` into `rpms.lock.yaml`, which pins exact
+  versions. Packages already in the base image are excluded.
+- `repos/` — repo files for lockfile generation and MintMaker refresh;
+  they use `$SSL_CLIENT_CERT`/`$SSL_CLIENT_KEY` so MintMaker injects the
+  activation-key credentials.
+- `bin/generate-rpms-lockfile.sh` — regenerates `rpms.lock.yaml` when the
+  package list changes (needs a registered host or activation key).
+- MintMaker refreshes `rpms.lock.yaml` automatically on drift; the
+  `refresh-rpm-lockfiles` preset in `renovate.json` covers base image
+  bumps.
+
+For the RHEL AI productization team this is also the prototype for
+hermetic builds in the RHEL AI bootc components, which are larger and more
+complex.
 
 ## Release
 

@@ -1,0 +1,530 @@
+---
+lockfileVersion: 1
+lockfileVendor: redhat
+arches:
+- arch: aarch64
+  packages:
+  - url: https://cdn.redhat.com/content/dist/layered/rhel9/aarch64/rhelai/3.6/os/Packages/o/openshell-cli-0.1.3.rhaiv.1-2.el9ai.aarch64.rpm
+    repoid: rhelai-3.6-for-rhel-9-rpms
+    size: 6534020
+    checksum: sha256:83475378d49a696ec18e66eb5f19c9f86fd2740b60344d36eba70d1c5aa68a0e
+    name: openshell-cli
+    evr: 0.1.3.rhaiv.1-2.el9ai
+    sourcerpm: openshell-0.1.3.rhaiv.1-2.el9ai.src.rpm
+  - url: https://cdn.redhat.com/content/dist/layered/rhel9/aarch64/rhelai/3.6/os/Packages/o/openshell-gateway-0.1.3.rhaiv.1-2.el9ai.aarch64.rpm
+    repoid: rhelai-3.6-for-rhel-9-rpms
+    size: 26300237
+    checksum: sha256:e5fd872b8b8b1674cb553290f6fcd2897431818c6c80f9e5b20f4e3697555a41
+    name: openshell-gateway
+    evr: 0.1.3.rhaiv.1-2.el9ai
+    sourcerpm: openshell-0.1.3.rhaiv.1-2.el9ai.src.rpm
+  - url: https://cdn.redhat.com/content/dist/layered/rhel9/aarch64/rhelai/3.6/os/Packages/o/openshell-sandbox-0.1.3.rhaiv.1-2.el9ai.aarch64.rpm
+    repoid: rhelai-3.6-for-rhel-9-rpms
+    size: 3339619
+    checksum: sha256:b0b5d162fe39575fd7d408c2a7e790ecfcae22ce3e2ba1dd99ec5c8f84367742
+    name: openshell-sandbox
+    evr: 0.1.3.rhaiv.1-2.el9ai
+    sourcerpm: openshell-0.1.3.rhaiv.1-2.el9ai.src.rpm
+  - url: https://cdn.redhat.com/content/dist/layered/rhel9/aarch64/rhelai/3.6/os/Packages/o/openshell-supervisor-0.1.3.rhaiv.1-2.el9ai.aarch64.rpm
+    repoid: rhelai-3.6-for-rhel-9-rpms
+    size: 9242289
+    checksum: sha256:87645cad3544fab369b5392bf90c1da3f4f23cc0baba0d81d11b86f87e02e95f
+    name: openshell-supervisor
+    evr: 0.1.3.rhaiv.1-2.el9ai
+    sourcerpm: openshell-0.1.3.rhaiv.1-2.el9ai.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/c/checkpolicy-3.6-1.el9.aarch64.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 360096
+    checksum: sha256:be68ea8774a5aa3b0220043aa21aa93213d4ec0e1cf0c1e9114369ed16ada37e
+    name: checkpolicy
+    evr: 3.6-1.el9
+    sourcerpm: checkpolicy-3.6-1.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/c/cloud-init-24.4-4.el9_6.5.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 1402444
+    checksum: sha256:59058457ee5662569dd7a4d6a7e4c0ca178694ca049cdc2168d6eb206efe1d7b
+    name: cloud-init
+    evr: 24.4-4.el9_6.5
+    sourcerpm: cloud-init-24.4-4.el9_6.5.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/l/liburing-2.5-1.el9.aarch64.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 42640
+    checksum: sha256:d46c8dd7a117ed75c59cfe500b28697652585bb6e72da4a5f1aae6493042fbcf
+    name: liburing
+    evr: 2.5-1.el9
+    sourcerpm: liburing-2.5-1.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/n/nmap-ncat-7.92-3.el9.aarch64.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 228860
+    checksum: sha256:bd929a6e3161dfee43b377f888d3712ee70cfb591f50cab845e8551973b010f1
+    name: nmap-ncat
+    evr: 3:7.92-3.el9
+    sourcerpm: nmap-7.92-3.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/n/nodejs-16.20.2-8.el9_4.aarch64.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 119245
+    checksum: sha256:5909a5d7693345a6c44c1bf7118697964b20f2c8b177f91be3ae4938a70bf27e
+    name: nodejs
+    evr: 1:16.20.2-8.el9_4
+    sourcerpm: nodejs-16.20.2-8.el9_4.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/n/nodejs-libs-16.20.2-8.el9_4.aarch64.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 14166012
+    checksum: sha256:4ec0d86787f99d580d0a670760c0df4793245aacc110e7dded412608a4428759
+    name: nodejs-libs
+    evr: 1:16.20.2-8.el9_4
+    sourcerpm: nodejs-16.20.2-8.el9_4.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-attrs-20.3.0-7.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 93690
+    checksum: sha256:84b0fa69094c9ac3dc4ecd792b44e4fc9b005446b0720e151e884b7438e77eac
+    name: python3-attrs
+    evr: 20.3.0-7.el9
+    sourcerpm: python-attrs-20.3.0-7.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-audit-3.1.5-4.el9.aarch64.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 88077
+    checksum: sha256:64aa38b4c72581b383e0002a498f2804d89640f01a7daac0d8abec2eb1aa4808
+    name: python3-audit
+    evr: 3.1.5-4.el9
+    sourcerpm: audit-3.1.5-4.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-babel-2.9.1-2.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 6258508
+    checksum: sha256:4846ecf18d3670ad6fbdcc1c29d6cdd37faa4ae20786c64d080307daae1a6f97
+    name: python3-babel
+    evr: 2.9.1-2.el9
+    sourcerpm: babel-2.9.1-2.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-configobj-5.0.6-25.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 68015
+    checksum: sha256:1ec50183819655e0eaadec0295e0c153581aa194b4f063480830b377cb0bed5e
+    name: python3-configobj
+    evr: 5.0.6-25.el9
+    sourcerpm: python-configobj-5.0.6-25.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-distro-1.5.0-7.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 41452
+    checksum: sha256:5cf4276217a72649895226707d4c0e3edd6ea64b66702793fab3907177c73069
+    name: python3-distro
+    evr: 1.5.0-7.el9
+    sourcerpm: python-distro-1.5.0-7.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-jinja2-2.11.3-8.el9_5.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 258696
+    checksum: sha256:710c85ec3ede5d8f58c91866a4e01fdd23bf28d578defbc98ed28ef39c1cbf4a
+    name: python3-jinja2
+    evr: 2.11.3-8.el9_5
+    sourcerpm: python-jinja2-2.11.3-8.el9_5.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-jsonpatch-1.21-16.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 30427
+    checksum: sha256:4eb20658678a66b8df80906d0a89c86a41e759c6f537860d97002d9f1ef38c44
+    name: python3-jsonpatch
+    evr: 1.21-16.el9
+    sourcerpm: python-jsonpatch-1.21-16.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-jsonpointer-2.0-4.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 23279
+    checksum: sha256:7948aec4859ead1f36daffb891da5f8c9f0528b17a48107f1eb0f8e682f3dc06
+    name: python3-jsonpointer
+    evr: 2.0-4.el9
+    sourcerpm: python-jsonpointer-2.0-4.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-jsonschema-3.2.0-13.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 132520
+    checksum: sha256:9720bbbe8540755acc7d0c2bbac27c08923225cea988e12ba1d99bdb68550711
+    name: python3-jsonschema
+    evr: 3.2.0-13.el9
+    sourcerpm: python-jsonschema-3.2.0-13.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-libselinux-3.6-3.el9.aarch64.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 191826
+    checksum: sha256:dcc609ec4df45a30606ce85999c9cf45e819d4f8e8479662dfaf6bfb1b27dd2d
+    name: python3-libselinux
+    evr: 3.6-3.el9
+    sourcerpm: libselinux-3.6-3.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-libsemanage-3.6-5.el9_6.aarch64.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 82350
+    checksum: sha256:1a32b9c090a98ddffe5ef70e4485dae8c295d942d87e15753e1cb5f01e23bc97
+    name: python3-libsemanage
+    evr: 3.6-5.el9_6
+    sourcerpm: libsemanage-3.6-5.el9_6.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-markupsafe-1.1.1-12.el9.aarch64.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 39703
+    checksum: sha256:7676770699e036b24aed10a112769154c2cd702ddc4bc90f36469ac8a22cc105
+    name: python3-markupsafe
+    evr: 1.1.1-12.el9
+    sourcerpm: python-markupsafe-1.1.1-12.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-netifaces-0.10.6-15.el9.aarch64.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 26691
+    checksum: sha256:f821d67686ec0b3c07260bdc41dd9aa720e370c1f8e5b158691d7d182184c0da
+    name: python3-netifaces
+    evr: 0.10.6-15.el9
+    sourcerpm: python-netifaces-0.10.6-15.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-oauthlib-3.1.1-5.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 231620
+    checksum: sha256:5cf0c2c3bb041dcab0b23d1899d8e65c56075b2f9ccb3b14b39e9e49f8f993c7
+    name: python3-oauthlib
+    evr: 3.1.1-5.el9
+    sourcerpm: python-oauthlib-3.1.1-5.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-pip-21.3.1-1.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 2133958
+    checksum: sha256:2ff41d5bbfb5bf09378a499b56d9854e9389e3a8648897426d144f4b385f8730
+    name: python3-pip
+    evr: 21.3.1-1.el9
+    sourcerpm: python-pip-21.3.1-1.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-policycoreutils-3.6-2.1.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 2216589
+    checksum: sha256:7dbe7be855cc83e372add890e9e0c5256ef57132d9731b5db204c425bf21b194
+    name: python3-policycoreutils
+    evr: 3.6-2.1.el9
+    sourcerpm: policycoreutils-3.6-2.1.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-prettytable-0.7.2-27.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 46243
+    checksum: sha256:bb55cc345886d53cebce5dee454dd9a922348551114f3380831066e053da0a98
+    name: python3-prettytable
+    evr: 0.7.2-27.el9
+    sourcerpm: python-prettytable-0.7.2-27.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-pyrsistent-0.17.3-8.el9.aarch64.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 120531
+    checksum: sha256:4d99430ff50e83cd4b3719c95fe56d9b1852c612556d7054a9849f871da6d231
+    name: python3-pyrsistent
+    evr: 0.17.3-8.el9
+    sourcerpm: python-pyrsistent-0.17.3-8.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-pyserial-3.4-12.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 189287
+    checksum: sha256:1a17cbe0a1a6667c8bb1e1bb954e5b5ed03879164325f0aa585de85816b5da3f
+    name: python3-pyserial
+    evr: 3.4-12.el9
+    sourcerpm: pyserial-3.4-12.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/p/python3-pytz-2021.1-5.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 56307
+    checksum: sha256:a50bd12c043f7ddb102f51ad947c824ad368caca549b6f73c11c0369ecb390e4
+    name: python3-pytz
+    evr: 2021.1-5.el9
+    sourcerpm: pytz-2021.1-5.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/appstream/os/Packages/q/qemu-guest-agent-9.1.0-15.el9_6.20.aarch64.rpm
+    repoid: rhel-9-for-aarch64-appstream-eus-rpms
+    size: 339341
+    checksum: sha256:80b170c78dafdaba15590537b0dbb3bbdac82f3c766e39eb40b1cfdfc3a72935
+    name: qemu-guest-agent
+    evr: 17:9.1.0-15.el9_6.20
+    sourcerpm: qemu-kvm-9.1.0-15.el9_6.20.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/baseos/os/Packages/d/dhcp-client-4.4.2-19.b1.el9.aarch64.rpm
+    repoid: rhel-9-for-aarch64-baseos-eus-rpms
+    size: 788918
+    checksum: sha256:82cb3e14af7b6d13aaf69949aeaac6746f9e2199fdee03c277cc8aa2563fe701
+    name: dhcp-client
+    evr: 12:4.4.2-19.b1.el9
+    sourcerpm: dhcp-4.4.2-19.b1.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/baseos/os/Packages/d/dhcp-common-4.4.2-19.b1.el9.noarch.rpm
+    repoid: rhel-9-for-aarch64-baseos-eus-rpms
+    size: 133925
+    checksum: sha256:abf06b4ccaafa322bd7d49ca8b239d6852af8f4ba31b8ab3edc1512208767327
+    name: dhcp-common
+    evr: 12:4.4.2-19.b1.el9
+    sourcerpm: dhcp-4.4.2-19.b1.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/baseos/os/Packages/i/ipcalc-1.0.0-5.el9.aarch64.rpm
+    repoid: rhel-9-for-aarch64-baseos-eus-rpms
+    size: 44389
+    checksum: sha256:ef1ea0b77e0de0f9290b87bca0f713de5e138b01ba386fc575571aea9cfa39e2
+    name: ipcalc
+    evr: 1.0.0-5.el9
+    sourcerpm: ipcalc-1.0.0-5.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/baseos/os/Packages/l/libibverbs-54.0-2.el9_6.aarch64.rpm
+    repoid: rhel-9-for-aarch64-baseos-eus-rpms
+    size: 453579
+    checksum: sha256:ba58022e8cc105d110a923e1126a6e43c57d79218e3be9c4cbc8c09f28d3c67c
+    name: libibverbs
+    evr: 54.0-2.el9_6
+    sourcerpm: rdma-core-54.0-2.el9_6.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/baseos/os/Packages/l/libpcap-1.10.0-4.el9.aarch64.rpm
+    repoid: rhel-9-for-aarch64-baseos-eus-rpms
+    size: 176251
+    checksum: sha256:cd6462c66489eed11b8d9f1acf70a38a1a2629a969a31d0f511eca148783dcdd
+    name: libpcap
+    evr: 14:1.10.0-4.el9
+    sourcerpm: libpcap-1.10.0-4.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/aarch64/baseos/os/Packages/p/python3-setools-4.4.4-1.el9.aarch64.rpm
+    repoid: rhel-9-for-aarch64-baseos-eus-rpms
+    size: 613411
+    checksum: sha256:f8e347a37155ff1b805c7d7ed1ad98db8df8fdfcf3d04c13c819e796604c892f
+    name: python3-setools
+    evr: 4.4.4-1.el9
+    sourcerpm: setools-4.4.4-1.el9.src.rpm
+  source: []
+  module_metadata: []
+- arch: x86_64
+  packages:
+  - url: https://cdn.redhat.com/content/dist/layered/rhel9/x86_64/rhelai/3.6/os/Packages/o/openshell-cli-0.1.3.rhaiv.1-2.el9ai.x86_64.rpm
+    repoid: rhelai-3.6-for-rhel-9-rpms
+    size: 7023049
+    checksum: sha256:a9ba42daad91e10104f99db4ef8299adfe079d5deb2b7dbc3d983b98038ab1b6
+    name: openshell-cli
+    evr: 0.1.3.rhaiv.1-2.el9ai
+    sourcerpm: openshell-0.1.3.rhaiv.1-2.el9ai.src.rpm
+  - url: https://cdn.redhat.com/content/dist/layered/rhel9/x86_64/rhelai/3.6/os/Packages/o/openshell-gateway-0.1.3.rhaiv.1-2.el9ai.x86_64.rpm
+    repoid: rhelai-3.6-for-rhel-9-rpms
+    size: 27909464
+    checksum: sha256:410315ba9ed706e259128010e88b5ad2fa7ccd456d2758b167cdc2c7ecd071d8
+    name: openshell-gateway
+    evr: 0.1.3.rhaiv.1-2.el9ai
+    sourcerpm: openshell-0.1.3.rhaiv.1-2.el9ai.src.rpm
+  - url: https://cdn.redhat.com/content/dist/layered/rhel9/x86_64/rhelai/3.6/os/Packages/o/openshell-sandbox-0.1.3.rhaiv.1-2.el9ai.x86_64.rpm
+    repoid: rhelai-3.6-for-rhel-9-rpms
+    size: 3648685
+    checksum: sha256:60c3bb0fa6b5947e09ef469bd08479ab07763d985782d8e4288f82063fdd710a
+    name: openshell-sandbox
+    evr: 0.1.3.rhaiv.1-2.el9ai
+    sourcerpm: openshell-0.1.3.rhaiv.1-2.el9ai.src.rpm
+  - url: https://cdn.redhat.com/content/dist/layered/rhel9/x86_64/rhelai/3.6/os/Packages/o/openshell-supervisor-0.1.3.rhaiv.1-2.el9ai.x86_64.rpm
+    repoid: rhelai-3.6-for-rhel-9-rpms
+    size: 9960471
+    checksum: sha256:092de77c90f61451580347f6232b8a5c73631c5d50b2596af4ed3e05d8ec7fd2
+    name: openshell-supervisor
+    evr: 0.1.3.rhaiv.1-2.el9ai
+    sourcerpm: openshell-0.1.3.rhaiv.1-2.el9ai.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/c/checkpolicy-3.6-1.el9.x86_64.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 365931
+    checksum: sha256:3d12bc7e21276434108c97561f75d1854283afb73d4fface3b836acee09f8d98
+    name: checkpolicy
+    evr: 3.6-1.el9
+    sourcerpm: checkpolicy-3.6-1.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/c/cloud-init-24.4-4.el9_6.5.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 1402444
+    checksum: sha256:59058457ee5662569dd7a4d6a7e4c0ca178694ca049cdc2168d6eb206efe1d7b
+    name: cloud-init
+    evr: 24.4-4.el9_6.5
+    sourcerpm: cloud-init-24.4-4.el9_6.5.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/l/liburing-2.5-1.el9.x86_64.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 42739
+    checksum: sha256:cc7894188e8c9cc06335a47150f05ad80cbbf91cbf7c877e5e75683bddf61b53
+    name: liburing
+    evr: 2.5-1.el9
+    sourcerpm: liburing-2.5-1.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/n/nmap-ncat-7.92-3.el9.x86_64.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 234565
+    checksum: sha256:4107c9b2ac6fe1a6be44088f79fcafd012e22c7867dad98741c88590cadeb5a2
+    name: nmap-ncat
+    evr: 3:7.92-3.el9
+    sourcerpm: nmap-7.92-3.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/n/nodejs-16.20.2-8.el9_4.x86_64.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 119244
+    checksum: sha256:d5b23abda3f4ed68d4986fdbca82a15a63a179dc2ca4cb772e08e3d9ac3ae43f
+    name: nodejs
+    evr: 1:16.20.2-8.el9_4
+    sourcerpm: nodejs-16.20.2-8.el9_4.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/n/nodejs-libs-16.20.2-8.el9_4.x86_64.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 15208495
+    checksum: sha256:68d15f8a48676fbf9f4c891da8b651eaeb133e1eb7a776eaec8f5db2a5e83cec
+    name: nodejs-libs
+    evr: 1:16.20.2-8.el9_4
+    sourcerpm: nodejs-16.20.2-8.el9_4.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-attrs-20.3.0-7.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 93690
+    checksum: sha256:84b0fa69094c9ac3dc4ecd792b44e4fc9b005446b0720e151e884b7438e77eac
+    name: python3-attrs
+    evr: 20.3.0-7.el9
+    sourcerpm: python-attrs-20.3.0-7.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-audit-3.1.5-4.el9.x86_64.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 88009
+    checksum: sha256:023ddd2c1dda3422bc1b067e562b39621eaefdf778efd0dae07fc144ba188fb5
+    name: python3-audit
+    evr: 3.1.5-4.el9
+    sourcerpm: audit-3.1.5-4.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-babel-2.9.1-2.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 6258508
+    checksum: sha256:4846ecf18d3670ad6fbdcc1c29d6cdd37faa4ae20786c64d080307daae1a6f97
+    name: python3-babel
+    evr: 2.9.1-2.el9
+    sourcerpm: babel-2.9.1-2.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-configobj-5.0.6-25.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 68015
+    checksum: sha256:1ec50183819655e0eaadec0295e0c153581aa194b4f063480830b377cb0bed5e
+    name: python3-configobj
+    evr: 5.0.6-25.el9
+    sourcerpm: python-configobj-5.0.6-25.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-distro-1.5.0-7.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 41452
+    checksum: sha256:5cf4276217a72649895226707d4c0e3edd6ea64b66702793fab3907177c73069
+    name: python3-distro
+    evr: 1.5.0-7.el9
+    sourcerpm: python-distro-1.5.0-7.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-jinja2-2.11.3-8.el9_5.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 258696
+    checksum: sha256:710c85ec3ede5d8f58c91866a4e01fdd23bf28d578defbc98ed28ef39c1cbf4a
+    name: python3-jinja2
+    evr: 2.11.3-8.el9_5
+    sourcerpm: python-jinja2-2.11.3-8.el9_5.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-jsonpatch-1.21-16.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 30427
+    checksum: sha256:4eb20658678a66b8df80906d0a89c86a41e759c6f537860d97002d9f1ef38c44
+    name: python3-jsonpatch
+    evr: 1.21-16.el9
+    sourcerpm: python-jsonpatch-1.21-16.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-jsonpointer-2.0-4.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 23279
+    checksum: sha256:7948aec4859ead1f36daffb891da5f8c9f0528b17a48107f1eb0f8e682f3dc06
+    name: python3-jsonpointer
+    evr: 2.0-4.el9
+    sourcerpm: python-jsonpointer-2.0-4.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-jsonschema-3.2.0-13.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 132520
+    checksum: sha256:9720bbbe8540755acc7d0c2bbac27c08923225cea988e12ba1d99bdb68550711
+    name: python3-jsonschema
+    evr: 3.2.0-13.el9
+    sourcerpm: python-jsonschema-3.2.0-13.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-libselinux-3.6-3.el9.x86_64.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 196472
+    checksum: sha256:7af821a0ee7c7b56df79de25fe35cc2d0fd6f45df5c3bcec2c5e72d7378ba265
+    name: python3-libselinux
+    evr: 3.6-3.el9
+    sourcerpm: libselinux-3.6-3.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-libsemanage-3.6-5.el9_6.x86_64.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 82730
+    checksum: sha256:8a17df19f0ff5dbb98fe608999cb2370983d8565658df01d0993b3028cbf28d6
+    name: python3-libsemanage
+    evr: 3.6-5.el9_6
+    sourcerpm: libsemanage-3.6-5.el9_6.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-markupsafe-1.1.1-12.el9.x86_64.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 39751
+    checksum: sha256:7a6305278faf25731f723d72b74140e408163a51b5b201f76cfbc3fff8c34331
+    name: python3-markupsafe
+    evr: 1.1.1-12.el9
+    sourcerpm: python-markupsafe-1.1.1-12.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-netifaces-0.10.6-15.el9.x86_64.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 26774
+    checksum: sha256:fccd311803e002eeb0fdd8fc7d33c4a808c75d7849ee8be7c1f4dad6d0d27c70
+    name: python3-netifaces
+    evr: 0.10.6-15.el9
+    sourcerpm: python-netifaces-0.10.6-15.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-oauthlib-3.1.1-5.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 231620
+    checksum: sha256:5cf0c2c3bb041dcab0b23d1899d8e65c56075b2f9ccb3b14b39e9e49f8f993c7
+    name: python3-oauthlib
+    evr: 3.1.1-5.el9
+    sourcerpm: python-oauthlib-3.1.1-5.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-pip-21.3.1-1.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 2133958
+    checksum: sha256:2ff41d5bbfb5bf09378a499b56d9854e9389e3a8648897426d144f4b385f8730
+    name: python3-pip
+    evr: 21.3.1-1.el9
+    sourcerpm: python-pip-21.3.1-1.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-policycoreutils-3.6-2.1.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 2216589
+    checksum: sha256:7dbe7be855cc83e372add890e9e0c5256ef57132d9731b5db204c425bf21b194
+    name: python3-policycoreutils
+    evr: 3.6-2.1.el9
+    sourcerpm: policycoreutils-3.6-2.1.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-prettytable-0.7.2-27.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 46243
+    checksum: sha256:bb55cc345886d53cebce5dee454dd9a922348551114f3380831066e053da0a98
+    name: python3-prettytable
+    evr: 0.7.2-27.el9
+    sourcerpm: python-prettytable-0.7.2-27.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-pyrsistent-0.17.3-8.el9.x86_64.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 120877
+    checksum: sha256:9a943323c7711600eefbbde0977973b2767cca00788d4032b2f2eb880c1b02de
+    name: python3-pyrsistent
+    evr: 0.17.3-8.el9
+    sourcerpm: python-pyrsistent-0.17.3-8.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-pyserial-3.4-12.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 189287
+    checksum: sha256:1a17cbe0a1a6667c8bb1e1bb954e5b5ed03879164325f0aa585de85816b5da3f
+    name: python3-pyserial
+    evr: 3.4-12.el9
+    sourcerpm: pyserial-3.4-12.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/p/python3-pytz-2021.1-5.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 56307
+    checksum: sha256:a50bd12c043f7ddb102f51ad947c824ad368caca549b6f73c11c0369ecb390e4
+    name: python3-pytz
+    evr: 2021.1-5.el9
+    sourcerpm: pytz-2021.1-5.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/appstream/os/Packages/q/qemu-guest-agent-9.1.0-15.el9_6.20.x86_64.rpm
+    repoid: rhel-9-for-x86_64-appstream-eus-rpms
+    size: 474151
+    checksum: sha256:6c8248046eb098cbab32f954f858c1c52fbfeb63b70922cbdd92fd070ff4f2de
+    name: qemu-guest-agent
+    evr: 17:9.1.0-15.el9_6.20
+    sourcerpm: qemu-kvm-9.1.0-15.el9_6.20.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/baseos/os/Packages/d/dhcp-client-4.4.2-19.b1.el9.x86_64.rpm
+    repoid: rhel-9-for-x86_64-baseos-eus-rpms
+    size: 812977
+    checksum: sha256:72823b0e47915484302ade0a5480985e51565968a01e884cb899ebc57d21cc5b
+    name: dhcp-client
+    evr: 12:4.4.2-19.b1.el9
+    sourcerpm: dhcp-4.4.2-19.b1.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/baseos/os/Packages/d/dhcp-common-4.4.2-19.b1.el9.noarch.rpm
+    repoid: rhel-9-for-x86_64-baseos-eus-rpms
+    size: 133925
+    checksum: sha256:abf06b4ccaafa322bd7d49ca8b239d6852af8f4ba31b8ab3edc1512208767327
+    name: dhcp-common
+    evr: 12:4.4.2-19.b1.el9
+    sourcerpm: dhcp-4.4.2-19.b1.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/baseos/os/Packages/i/ipcalc-1.0.0-5.el9.x86_64.rpm
+    repoid: rhel-9-for-x86_64-baseos-eus-rpms
+    size: 45060
+    checksum: sha256:185c9b26e524ad1e026cb223f05b6eaf9fd5769ced16ff9897080aa8735ffe64
+    name: ipcalc
+    evr: 1.0.0-5.el9
+    sourcerpm: ipcalc-1.0.0-5.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/baseos/os/Packages/l/libibverbs-54.0-2.el9_6.x86_64.rpm
+    repoid: rhel-9-for-x86_64-baseos-eus-rpms
+    size: 459598
+    checksum: sha256:686c25ccd3e0ede4301a8c34d461f3ea820c6b3e026f325bfd8b99cb5fd05cdc
+    name: libibverbs
+    evr: 54.0-2.el9_6
+    sourcerpm: rdma-core-54.0-2.el9_6.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/baseos/os/Packages/l/libpcap-1.10.0-4.el9.x86_64.rpm
+    repoid: rhel-9-for-x86_64-baseos-eus-rpms
+    size: 180846
+    checksum: sha256:3c0c51cc6b947970812238914713f1f96aa5e9bdaaceb6ee50249540ad89f05b
+    name: libpcap
+    evr: 14:1.10.0-4.el9
+    sourcerpm: libpcap-1.10.0-4.el9.src.rpm
+  - url: https://cdn.redhat.com/content/eus/rhel9/9.6/x86_64/baseos/os/Packages/p/python3-setools-4.4.4-1.el9.x86_64.rpm
+    repoid: rhel-9-for-x86_64-baseos-eus-rpms
+    size: 623460
+    checksum: sha256:91946d729d2b03b4abe1c43962f22d110468db0163241cda7b1d549c615d0261
+    name: python3-setools
+    evr: 4.4.4-1.el9
+    sourcerpm: setools-4.4.4-1.el9.src.rpm
+  source: []
+  module_metadata: []
