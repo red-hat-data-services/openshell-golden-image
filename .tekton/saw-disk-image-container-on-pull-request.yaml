@@ -58,6 +58,7 @@ spec:
     - io.k8s.description=Secure Agent Workspace golden image qcow2 disk-image container
     - maintainer=Red Hat, Inc.
     - vendor=Red Hat, Inc.
+    - distribution-scope=private
   - name: additional-build-secret
     value: "components-namespace-pull"
   pipelineRef:
