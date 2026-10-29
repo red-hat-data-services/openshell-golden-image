@@ -60,6 +60,7 @@ spec:
     - io.k8s.description=Secure Agent Workspace golden image bootc container
     - maintainer=Red Hat, Inc.
     - vendor=Red Hat, Inc.
+    - distribution-scope=private
   - name: activation-key
     value: "rhel-ai-activation-key"
   - name: additional-build-secret
