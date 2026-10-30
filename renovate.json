@@ -3,6 +3,21 @@
   "extends": [
     "github>konflux-ci/mintmaker-presets:refresh-rpm-lockfiles"
   ],
+  "packageRules": [
+    {
+      "description": "Refresh rpms.lock.yaml when the base image in argfile-saw.conf changes. The refresh-rpm-lockfiles preset only triggers for the dockerfile manager. The BASE_IMAGE value lives in an external argfile, so the custom.regex manager detects it instead.",
+      "matchManagers": ["custom.regex"],
+      "matchFileNames": ["argfile-saw.conf"],
+      "postUpgradeTasks": {
+        "commands": [
+          "refresh-rpm-lockfiles -f \"$RENOVATE_POST_UPGRADE_COMMAND_DATA_FILE\""
+        ],
+        "fileFilters": ["**/rpms.lock.yaml"],
+        "executionMode": "branch",
+        "dataFileTemplate": "[{{#each upgrades}}{\"packageFile\": \"{{{packageFile}}}\"}{{#unless @last}},{{/unless}}{{/each}}]"
+      }
+    }
+  ],
   "customManagers": [
     {
       "customType": "regex",
