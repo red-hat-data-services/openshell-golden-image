@@ -3,6 +3,13 @@
 # bin/generate-rpms-lockfile.sh). The lockfile pins exact versions —
 # there is no version pinning here. MintMaker refreshes rpms.lock.yaml
 # when the base image or the repositories drift.
+# Resolve the base image from Containerfile.saw using the build args in
+# argfile-saw.conf. This lets rpm-lockfile-prototype (and MintMaker) find
+# the correct rpmdb without a --image CLI flag.
+context:
+  containerfile:
+    file: Containerfile.saw
+    argFile: argfile-saw.conf
 contentOrigin:
   repofiles:
     - ./repos/rhel-9.6-eus.repo
