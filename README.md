@@ -53,7 +53,7 @@ The `saw-bootc` build is hermetic: the Konflux `prefetch-dependencies` task
 downloads every RPM pinned in `rpms.lock.yaml` (Hermeto) and the build
 itself runs without network. The activation key (`rhel-ai-activation-key`)
 is used only by the prefetch task, which registers to fetch the entitled
-cdn.redhat.com content (RHEL 9.6 EUS BaseOS/AppStream + RHEL AI 3.6).
+cdn.redhat.com content (RHEL 9.8 EUS BaseOS/AppStream + RHEL AI 3.6).
 
 - `rpms.in.yaml` — package list and repo sources; resolved by
   `rpm-lockfile-prototype` into `rpms.lock.yaml`, which pins exact

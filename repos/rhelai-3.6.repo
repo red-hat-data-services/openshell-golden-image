@@ -1,6 +1,6 @@
 # RHEL AI 3.6 layered repo (el9ai) for hermetic lockfile generation — the
 # four openshell-* RPMs come from here. Same credential mechanism as
-# rhel-9.6-eus.repo.
+# rhel-9.8-eus.repo.
 
 [rhelai-3.6-for-rhel-9-rpms]
 name = Red Hat Enterprise Linux AI (3.6) for RHEL 9 $basearch (RPMs)
