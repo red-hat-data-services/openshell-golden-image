@@ -12,7 +12,7 @@ context:
     argFile: argfile-saw.conf
 contentOrigin:
   repofiles:
-    - ./repos/rhel-9.6-eus.repo
+    - ./repos/rhel-9.8-eus.repo
     - ./repos/rhelai-3.6.repo
 arches:
   - x86_64

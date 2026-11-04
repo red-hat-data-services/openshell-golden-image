@@ -26,7 +26,7 @@
 # Prerequisites:
 #   - podman
 #   - either a subscription-manager-registered host (/etc/pki/entitlement),
-#     or --org + --activation-key with RHEL 9.6 EUS + RHEL AI 3.6 access
+#     or --org + --activation-key with RHEL 9.8 EUS + RHEL AI 3.6 access
 set -euo pipefail
 
 log() { echo -e "\n\033[1;34m==> $*\033[0m"; }
@@ -149,7 +149,7 @@ podman run "${PODMAN_ARGS[@]}" \
         if [[ "${REGISTER}" -eq 1 ]]; then
             log "Registering with subscription-manager"
             subscription-manager register --org "${ORG}" --activationkey "${KEY}"
-            subscription-manager release --set=9.6 || true
+            subscription-manager release --set=9.8 || true
         fi
 
         # Entitlement certs as DNF_VAR_* env vars — same as MintMaker.

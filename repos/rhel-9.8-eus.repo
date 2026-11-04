@@ -1,4 +1,4 @@
-# RHEL 9.6 EUS repos for hermetic lockfile generation.
+# RHEL 9.8 EUS repos for hermetic lockfile generation.
 # Uses CDN URLs with $SSL_CLIENT_CERT / $SSL_CLIENT_KEY so that:
 #   - MintMaker injects credentials from the activation-key secret
 #   - bin/generate-rpms-lockfile.sh sets DNF_VAR_SSL_CLIENT_CERT/KEY from
@@ -8,7 +8,7 @@
 
 [rhel-9-for-$basearch-baseos-eus-rpms]
 name = Red Hat Enterprise Linux 9 for $basearch - BaseOS - Extended Update Support (RPMs)
-baseurl = https://cdn.redhat.com/content/eus/rhel9/9.6/$basearch/baseos/os
+baseurl = https://cdn.redhat.com/content/eus/rhel9/9.8/$basearch/baseos/os
 enabled = 1
 gpgcheck = 1
 repo_gpgcheck = 0
@@ -22,7 +22,7 @@ enabled_metadata = 1
 
 [rhel-9-for-$basearch-appstream-eus-rpms]
 name = Red Hat Enterprise Linux 9 for $basearch - AppStream - Extended Update Support (RPMs)
-baseurl = https://cdn.redhat.com/content/eus/rhel9/9.6/$basearch/appstream/os
+baseurl = https://cdn.redhat.com/content/eus/rhel9/9.8/$basearch/appstream/os
 enabled = 1
 gpgcheck = 1
 repo_gpgcheck = 0
