@@ -61,6 +61,10 @@ spec:
     - distribution-scope=private
   - name: additional-build-secret
     value: "components-namespace-pull"
+  - name: hermetic
+    value: "true"
+  - name: disk-image-build-args-file
+    value: "argfile-saw-disk-image.conf"
   - name: snyk-project-name
     value: "ai-red-hat-inference-server"
   - name: snyk-org
@@ -72,7 +76,7 @@ spec:
     - name: revision
       value: main
     - name: pathInRepo
-      value: pipelines/disk-image-container.yaml
+      value: pipelines/disk-image-container-hermetic.yaml
     resolver: git
   taskRunSpecs:
   - pipelineTaskName: build-container
@@ -87,3 +91,6 @@ spec:
   - name: git-auth
     secret:
       secretName: "{{ git_auth_secret }}"
+  - name: "registry-auth"
+    secret:
+      secretName: "components-namespace-pull"
