@@ -67,6 +67,10 @@ spec:
     value: "rhel-ai-activation-key"
   - name: additional-build-secret
     value: "global-pull-secret"
+  - name: snyk-project-name
+    value: "ai-red-hat-inference-server"
+  - name: snyk-org
+    value: "98e4f46e-334c-414b-b444-43361f404b2f"
   - name: add-capabilities
     value: "SYS_ADMIN"
   - name: privileged-nested
