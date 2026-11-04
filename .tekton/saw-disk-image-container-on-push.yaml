@@ -58,6 +58,10 @@ spec:
     - distribution-scope=private
   - name: additional-build-secret
     value: "components-namespace-pull"
+  - name: snyk-project-name
+    value: "ai-red-hat-inference-server"
+  - name: snyk-org
+    value: "98e4f46e-334c-414b-b444-43361f404b2f"
   pipelineRef:
     params:
     - name: url
