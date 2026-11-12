@@ -41,8 +41,6 @@ spec:
     value: .
   - name: image-type
     value: qcow2
-  - name: config-toml
-    value: config/config-saw-qcow2.toml
   - name: bib-file
     value: bib-saw.yaml
   - name: build-platforms
@@ -50,6 +48,8 @@ spec:
     - linux-root/amd64
   - name: activation-key
     value: "rhel-ai-activation-key"
+  - name: builder-image
+    value: quay.io/redhat-user-workloads/ai-incubator-tenant/saw-golden-image/saw-bootc:image-builder-0c4d9b8@sha256:8bfc9884838edb070372827f9b3f94a86a5900ccdceb15c6920cc6a4095d51ae
   - name: image-size
     value: "20GiB"
   - name: hermetic
@@ -69,6 +69,9 @@ spec:
     resolver: git
   taskRunTemplate:
     serviceAccountName: build-pipeline-saw-qcow2-disk-image
+  podTemplate:
+    imagePullSecrets:
+    - name: saw-bootc-image-push
   workspaces:
   - name: git-auth
     secret:
