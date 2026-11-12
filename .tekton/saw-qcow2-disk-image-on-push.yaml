@@ -48,6 +48,10 @@ spec:
     - linux-root/amd64
   - name: activation-key
     value: "rhel-ai-activation-key"
+  - name: image-size
+    value: "20GiB"
+  - name: hermetic
+    value: "true"
   - name: snyk-project-name
     value: "ai-red-hat-inference-server"
   - name: snyk-org
@@ -57,9 +61,9 @@ spec:
     - name: url
       value: https://github.com/red-hat-data-services/aipcc-konflux-data.git
     - name: revision
-      value: main
+      value: RHAI-15893/taskflow-wiring
     - name: pathInRepo
-      value: pipelines/disk-image.yaml
+      value: pipelines/disk-image-taskflow.yaml
     resolver: git
   taskRunTemplate:
     serviceAccountName: build-pipeline-saw-qcow2-disk-image
