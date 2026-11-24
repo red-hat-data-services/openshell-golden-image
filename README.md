@@ -63,9 +63,13 @@ cdn.redhat.com content (RHEL 9.8 EUS BaseOS/AppStream + RHEL AI 3.6).
   activation-key credentials.
 - `bin/generate-rpms-lockfile.sh` — regenerates `rpms.lock.yaml` when the
   package list changes (needs a registered host or activation key).
-- MintMaker refreshes `rpms.lock.yaml` automatically on drift; the
-  `refresh-rpm-lockfiles` preset in `renovate.json` covers base image
-  bumps.
+- MintMaker refreshes `rpms.lock.yaml` automatically on drift. It also
+  regenerates the lockfile inside the base image PR: the `packageRules`
+  entry in `renovate.json` calls `rpm-lockfile-prototype rpms.in.yaml`
+  as a post-upgrade task, so `argfile-saw.conf` and `rpms.lock.yaml`
+  change together. The `refresh-rpm-lockfiles` preset cannot do this: it
+  matches upgrades to lockfiles by containerfile name, and `BASE_IMAGE`
+  lives in the argfile.
 
 For the RHEL AI productization team this is also the prototype for
 hermetic builds in the RHEL AI bootc components, which are larger and more

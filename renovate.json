@@ -5,16 +5,15 @@
   ],
   "packageRules": [
     {
-      "description": "Refresh rpms.lock.yaml when the base image in argfile-saw.conf changes. The refresh-rpm-lockfiles preset only triggers for the dockerfile manager. The BASE_IMAGE value lives in an external argfile, so the custom.regex manager detects it instead.",
+      "description": "Refresh rpms.lock.yaml when the base image in argfile-saw.conf changes. The refresh-rpm-lockfiles preset only triggers for the dockerfile manager, and it cannot map an argfile to a lockfile: it matches upgrades to lockfiles by containerfile name, and BASE_IMAGE lives in argfile-saw.conf. Call rpm-lockfile-prototype directly instead. It reads context.containerfile from rpms.in.yaml, resolves the new BASE_IMAGE, and writes rpms.lock.yaml (its default --outfile). This exact command is on the MintMaker allowlist.",
       "matchManagers": ["custom.regex"],
       "matchFileNames": ["argfile-saw.conf"],
       "postUpgradeTasks": {
         "commands": [
-          "refresh-rpm-lockfiles -f \"$RENOVATE_POST_UPGRADE_COMMAND_DATA_FILE\""
+          "rpm-lockfile-prototype rpms.in.yaml"
         ],
         "fileFilters": ["**/rpms.lock.yaml"],
-        "executionMode": "branch",
-        "dataFileTemplate": "[{{#each upgrades}}{\"packageFile\": \"{{{packageFile}}}\"}{{#unless @last}},{{/unless}}{{/each}}]"
+        "executionMode": "branch"
       }
     }
   ],
