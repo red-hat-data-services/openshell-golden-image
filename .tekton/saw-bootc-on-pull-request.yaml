@@ -95,12 +95,6 @@ spec:
         memory: 12Gi
       requests:
         memory: 12Gi
-  - pipelineTaskName: clair-scan
-    computeResources:
-      limits:
-        memory: 12Gi
-      requests:
-        memory: 12Gi
   taskRunTemplate:
     serviceAccountName: build-pipeline-saw-bootc
   workspaces:
